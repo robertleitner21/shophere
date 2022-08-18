@@ -13,10 +13,7 @@
 <b>Description of item: </b>${product.description}<br>
 <b>Price of item: </b>${product.price}<br>
 <b>City: </b>${product.city}<br>
-<b>Author of item: </b>${product.author}<br>
-<hr>
-<form action="/product/delete/${product.id}" method="post">
-    <input type="submit" value="Delete item"/>
-</form>
+<b>Author of item: </b>${product.user.name}<br>
+<b>Author's phone number: </b>${product.user.phoneNumber}<br>
 </body>
 </html>
