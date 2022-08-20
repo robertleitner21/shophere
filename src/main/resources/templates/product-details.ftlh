@@ -13,7 +13,6 @@
 <b>Description of item: </b>${product.description}<br>
 <b>Price of item: </b>${product.price}<br>
 <b>City: </b>${product.city}<br>
-<b>Author of item: </b>${product.user.name}<br>
-<b>Author's phone number: </b>${product.user.phoneNumber}<br>
+<b>Author of item: </b><a href="/user/${product.user.id}">${product.user.name}</a><br>
 </body>
 </html>

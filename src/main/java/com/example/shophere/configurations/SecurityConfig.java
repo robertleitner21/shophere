@@ -32,7 +32,7 @@ public class SecurityConfig {
         // We don't need CSRF for this example
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/", "/product/**", "/images/**", "/registration")
+                .antMatchers("/", "/product/**", "/images/**", "/registration", "/user/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
