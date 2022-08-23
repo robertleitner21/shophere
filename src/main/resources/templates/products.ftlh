@@ -1,51 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ShopHere</title>
-</head>
-<body>
-<h1>ShopHere</h1>
-<hr>
-<#if user.email??>
-    <h3>Username: <i>${user.name}</i></h3>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input type="submit" value="Log out">
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
+    <h1 style="text-align: center">Search Item</h1><hr>
+    <form method="get" action="/">
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="searchCity">City</label>
+                <select id="searchCity" class="form-control">
+                    <option value="">City is not choosen</option>
+                    <option value="Warsaw">Warsaw</option>
+                    <option value="Krakow">Krakow</option>
+                    <option value="Wroclaw">Wroclaw</option>
+                    <option value="Gdansk">Gdansk</option>
+                    <option value="Gdynia">Gdynia</option>
+                    <option value="Poznan">Poznan</option>
+                    <option value="Szczecin">Szczecin</option>
+                    <option value="Opole">Opole</option>
+                    <option value="Katowice">Katowice</option>
+                    <option value="Lodz">Lodz</option>
+                    <option value="Lublin">Lublin</option>
+                    <option value="Przemysl">Przemysl</option>
+                    <option value="Bydgoszcz">Bydgoszcz</option>
+                    <option value="Bialystok">Bialystok</option>
+                    <option value="Radom">Radom</option>
+                </select>
+            </div>
+            <div class="form-group col-md-10">
+                <label for="searchWord">Search by advertisement</label>
+                <input type="text" name="searchWord" <#if searchWord??>value="${searchWord}"</#if> class="form-control"
+                       id="searchWord">
+            </div>
+            <button style="width: 100%"  type="submit" class="btn btn-dark">Search</button>
+        </div>
     </form>
-    <#if user.isAdmin()>
-        <a href="/admin">Admin panel</a>
-    </#if>
-<#else>
-    <a href="/login">Sign in</a>
-</#if>
-<hr>
-<h4>Products from Poland</h4>
-<form action="/" method="get">
-    Searching by item's title: <input type="text" name="title"><br>
-    <input type="submit" value="Search">
-</form>
-<#list products as product>
-    <div>
-        <p><b>${product.title}</b> ${product.price} usd | <a href="/product/${product.id}">Details...</a></p>
-    </div>
-    <#else>
-    <h3>Lack of items</h3>
-</#list>
-<#if user.email??>
-<hr>
-<h3>Create new item</h3>
-<form action="/product/create" method="post" enctype="multipart/form-data">
-    Title of product: <input type="text" name="title"/><br><br>
-    Description of product: <input type="text" name="description"/><br><br>
-    Price of product: <input type="number" name="price"/><br><br>
-    City: <input type="text" name="city"/><br><br>
-    First image: <input type="file" name="file1"/><br><br>
-    Second image: <input type="file" name="file2"/><br><br>
-    Third image: <input type="file" name="file3"/><br><br>
-    <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <input type="submit" value="Add item"/>
-</form>
+    <hr>
+    <div class="card-columns">
+        <#list products as product>
+            <a href="/product/${product.id}" class="product-link">
+                <div class="card text-white bg-dark my-3 product">
 
-</#if>
-</body>
-</html>
+                    <img src="/images/${product.previewImageId}"
+                         class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">${product.price} $</p>
+                    </div>
+                    <div class="card-footer">
+                        ${product.city}
+                    </div>
+                </div>
+            </a>
+        <#else>
+            <h1 style="text-align: center">Not Found!</h1>
+        </#list>
+    </div>
+</@t.template>
