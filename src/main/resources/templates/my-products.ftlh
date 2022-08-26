@@ -52,19 +52,31 @@
             <div class="form-group">
                 <div class="custom-file">
                     <input required type="file" name="file1" id="file1">
-                    <label class="custom-file-label" for="file1">First photo to item</label>
+                    <label class="custom-file-label" for="file1">1-st photo to item</label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="file2" id="file2">
-                    <label class="custom-file-label" for="file2">Second photo to item</label>
+                    <label class="custom-file-label" for="file2">2-nd photo to item</label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="file3" id="file3">
-                    <label class="custom-file-label" for="file3">Third photo to item</label>
+                    <label class="custom-file-label" for="file3">3-rd photo to item</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" name="file4" id="file4">
+                    <label class="custom-file-label" for="file4">4-th photo to item</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" name="file5" id="file5">
+                    <label class="custom-file-label" for="file5">5-th photo to item</label>
                 </div>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
